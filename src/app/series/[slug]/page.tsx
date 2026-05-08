@@ -93,6 +93,12 @@ export default async function SeriesPage({
 
     if (!series) notFound();
 
+    // ── Incrementar vistas (fire-and-forget) ─────────────────────────────────────
+    prisma.series.update({
+        where: { id: series.id },
+        data: { viewsCount: { increment: 1 } },
+    }).catch(() => { });
+
     // ── Fetch capítulos paginados ────────────────────────────────────────────────
     const [chapters, totalChapters] = await Promise.all([
         prisma.chapter.findMany({
@@ -160,14 +166,14 @@ export default async function SeriesPage({
             <div className="mx-auto max-w-4xl px-4 sm:px-6">
 
                 {/* ── Cover + info header ─────────────────────────────────────────── */}
-                <div className="flex gap-5 -mt-20 relative z-10">
+                <div className="flex gap-5 -mt-24 relative z-10">
 
                     {/* Cover */}
                     <div
                         className="flex-shrink-0 overflow-hidden shadow-xl"
                         style={{
-                            width: "120px",
-                            height: "180px",
+                            width: "160px",
+                            height: "240px",
                             borderRadius: "var(--radius-lg)",
                             backgroundColor: "var(--color-layer-3)",
                             border: "3px solid var(--color-layer-2)",
@@ -177,8 +183,8 @@ export default async function SeriesPage({
                             <Image
                                 src={series.coverUrl}
                                 alt={series.title}
-                                width={120}
-                                height={180}
+                                width={160}
+                                height={240}
                                 className="object-cover w-full h-full"
                             />
                         ) : (
@@ -189,7 +195,7 @@ export default async function SeriesPage({
                     </div>
 
                     {/* Info */}
-                    <div className="flex-1 min-w-0 pt-24">
+                    <div className="flex-1 min-w-0 pt-28">
                         {/* Géneros */}
                         {genres.length > 0 && (
                             <div className="flex flex-wrap gap-1.5 mb-2">

@@ -71,7 +71,7 @@ function SeriesCard({ series, username }: { series: SeriesItem; username: string
 
     return (
         <Link
-            href={`/${username}/${series.slug}`}
+            href={`/series/${series.slug}`}
             className="group flex flex-col overflow-hidden rounded-[10px] transition-transform duration-200 hover:-translate-y-0.5"
             style={{ backgroundColor: "var(--color-layer-2)" }}
         >
@@ -143,7 +143,7 @@ function ChapterRow({ chapter, username }: { chapter: RecentChapterItem; usernam
 
     return (
         <Link
-            href={`/${username}/${chapter.series.slug}/${chapter.slug}`}
+            href={`/series/${chapter.series.slug}/chapter/${chapter.number}`}
             className="group flex items-center gap-3 rounded-[10px] p-3 transition-colors"
             style={{ backgroundColor: "var(--color-layer-2)" }}
         >

@@ -53,7 +53,7 @@ export function Navbar({ siteName, logoUrl }: NavbarProps) {
 
   return (
     <nav
-      className="sticky top-0 z-40 flex h-12 w-full items-center justify-between px-4"
+      className="relative flex h-12 w-full items-center justify-between px-4"
       style={{
         backgroundColor: "var(--color-layer-1)",
         borderBottom: "1px solid var(--color-layer-3)",
