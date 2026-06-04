@@ -45,7 +45,7 @@ Una plataforma open source para publicar y leer webtoons, manga, manhwa y cómic
 ### 1. Clona el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/webtoon-stack.git
+git clone https://github.com/legendx2/webtoon-stack.git
 cd webtoon-stack
 ```
 
